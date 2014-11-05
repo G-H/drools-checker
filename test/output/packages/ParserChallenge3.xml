@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<package name="de.jss.drools.examples">
+	<type name="de.jss.drools.examples.Person">
+		<attribute name="birthday" type="java.util.Date"></attribute>
+		<attribute name="firstName" type="java.lang.String"></attribute>
+		<attribute name="lastName" type="java.lang.String"></attribute>
+		<attribute name="parent" type="de.jss.drools.examples.Person"></attribute>
+	</type>
+	<rule name="Test Rule 1: ==">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="lastName" relation="==" value="&quot;Doe&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 2: !=">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="lastName" relation="!=" value="&quot;Doe&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 3: null">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="firstName" relation="==" value="null"></constraint>
+				<constraint attribute="lastName" relation="!=" value="null"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 4: in">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<connective type="Disjunction">
+					<constraint attribute="firstName" relation="==" value="&quot;Abe&quot;"></constraint>
+					<constraint attribute="firstName" relation="==" value="&quot;Bob&quot;"></constraint>
+					<constraint attribute="firstName" relation="==" value="&quot;Che&quot;"></constraint>
+					<constraint attribute="firstName" relation="==" value="null"></constraint>
+				</connective>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 5: not in">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="firstName" relation="!=" value="&quot;Abe&quot;"></constraint>
+				<constraint attribute="firstName" relation="!=" value="&quot;Bob&quot;"></constraint>
+				<constraint attribute="firstName" relation="!=" value="&quot;Che&quot;"></constraint>
+				<constraint attribute="firstName" relation="!=" value="null"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 6: &lt;=">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="birthday" relation="&lt;=" value="birthday"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 7: Binding">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<binding name="$lastName" value="lastName"></binding>
+				<constraint attribute="firstName" relation="==" value="$lastName"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+	<rule name="Test Rule 7: Indirect Binding">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="firstName" relation="==" value="lastName"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println()"></message>
+		</consequences>
+	</rule>
+</package>

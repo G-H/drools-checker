@@ -1,0 +1,22 @@
+package de.jss.drools.examples
+
+dialect "mvel"
+
+import java.util.Date;
+
+
+declare Person
+	birthday : Date
+	firstName : String
+	lastName : String
+	parent : Person
+end
+
+rule "Test Rule 1: Does are Joes"
+	when
+		$p : Person(eval(firstName == "Joe"))
+	then
+		modify($p) {
+			firstName = "Doe"
+		}
+end

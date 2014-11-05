@@ -1,0 +1,73 @@
+package de.jss.drools.examples
+
+import java.util.Date;
+
+declare Person
+	birthday : Date
+	firstName : String
+	lastName : String
+	parent : Person
+end
+
+rule "Test Rule 1: =="
+	when
+		Person(lastName == "Doe")
+	then
+		System.out.println();
+end
+
+rule "Test Rule 2: !="
+	when
+		Person(lastName != "Doe")
+	then
+		System.out.println();
+end
+
+rule "Test Rule 3: null"
+	when
+		Person(firstName == null, lastName != null)
+	then
+		System.out.println();
+end
+
+rule "Test Rule 4: in"
+	when
+		Person(firstName in ("Abe", "Bob", "Che", null))
+	then
+		System.out.println();
+end
+
+rule "Test Rule 5: not in"
+	when
+		Person(firstName not in ("Abe", "Bob", "Che", null))
+	then
+		System.out.println();
+end
+
+rule "Test Rule 6: <="
+	when
+		Person(birthday <= birthday)
+	then
+		System.out.println();
+end
+
+//rule "Test Rule 6: eval"
+//	when
+//		Person(eval(firstName == null && lastName != null))
+//	then
+//		System.out.println();
+//end
+
+rule "Test Rule 7: Binding"
+	when
+		Person($lastName : lastName, firstName == $lastName)
+	then
+		System.out.println();
+end
+
+rule "Test Rule 7: Indirect Binding"
+	when
+		Person(firstName == lastName)
+	then
+		System.out.println();
+end

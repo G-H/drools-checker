@@ -1,0 +1,45 @@
+declare Flower
+	color : String
+	name : String
+end
+
+declare Person
+	name : String
+	sweetness : Integer
+end
+
+declare Sugar
+	sweetness : Integer
+end
+
+rule "Initializing Working Memory..."
+	then
+		System.out.println(drools.getRule().getName());
+		insert(new Flower("red", "Rose"));
+		insert(new Flower("yellow", "Violet"));
+		insert(new Person("Alice", 9));
+		insert(new Person("Bob", 7));
+		insert(new Sugar(9));
+end
+
+rule "Roses are red."
+	when Flower(color == "red", name == "Rose")
+	then System.out.println("We found a red rose.");
+end
+
+rule "Violets are blue?"
+	when $f : Flower(color != "blue", name == "Violet")
+	then System.out.println("We need to fix some violet.");
+		modify($f) { setColor("blue") }
+end
+
+rule "Violets are blue!"
+	when $f : Flower(color == "blue", name == "Violet")
+	then System.out.format("This seems like a proper violet: %s.\n", $f);
+end
+
+rule "Sugar is sweet and so are you."
+	when Sugar($sweetness : sweetness)
+		and $p : Person(sweetness == $sweetness)
+	then System.out.format("Maybe this is you: %s.\n", $p);
+end

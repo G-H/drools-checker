@@ -1,0 +1,51 @@
+declare A
+	x : Integer
+end
+
+rule "Initializing Working Memory..."
+	then
+		System.out.println(drools.getRule().getName());
+		insert(new A(4));
+end
+
+rule "Rule 3 < x < 10 -> 20"
+	when
+		$a : A(x > 3, x < 10)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(20)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule x > 10 -> 0"
+	when
+		$a : A(x > 10)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(0)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule 2 > 3"
+	when
+		$a : A(x == 2)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(3)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end

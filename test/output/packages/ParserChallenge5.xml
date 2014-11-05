@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<package name="de.jss.drools.examples">
+	<type name="de.jss.drools.examples.TestType">
+		<attribute name="testByte" type="byte"></attribute>
+		<attribute name="testShort" type="short"></attribute>
+		<attribute name="testInt" type="int"></attribute>
+		<attribute name="testLong" type="long"></attribute>
+		<attribute name="testFloat" type="float"></attribute>
+		<attribute name="testDouble" type="double"></attribute>
+		<attribute name="testBoolean" type="boolean"></attribute>
+		<attribute name="testChar" type="char"></attribute>
+	</type>
+	<rule name="Test Rule 1">
+		<conditions></conditions>
+		<consequences></consequences>
+	</rule>
+</package>

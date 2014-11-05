@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<package name="de.jss.drools.examples">
+	<type name="de.jss.drools.examples.Person">
+		<attribute name="firstName" type="java.lang.String"></attribute>
+		<attribute name="lastName" type="java.lang.String"></attribute>
+	</type>
+	<rule name="Simple modification">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<constraint attribute="lastName" relation="==" value="&quot;Joe&quot; + &quot;Doe&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<action factType="de.jss.drools.examples.Person" pattern="$p" type="Modification">
+				<assignment attribute="firstName" expression="&quot;Doe&quot;"></assignment>
+			</action>
+		</consequences>
+	</rule>
+	<rule name="Swap first and last name">
+		<conditions>
+			<pattern type="de.jss.drools.examples.Person">
+				<binding name="$lastName" value="lastName"></binding>
+				<binding name="$firstName" value="firstName"></binding>
+			</pattern>
+		</conditions>
+		<consequences>
+			<action factType="de.jss.drools.examples.Person" pattern="$p" type="Modification">
+				<assignment attribute="firstName" expression="$lastName + &quot;XX&quot;"></assignment>
+				<assignment attribute="lastName" expression="$firstName"></assignment>
+			</action>
+		</consequences>
+	</rule>
+</package>

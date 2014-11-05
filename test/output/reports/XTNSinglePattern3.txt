@@ -1,0 +1,2 @@
+defaultpkg_A(x, y) -> defaultpkg_A(0, 1) [x=1]
+defaultpkg_A(x, y) -> defaultpkg_A(1, 0) [y=1]

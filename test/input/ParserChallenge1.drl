@@ -1,0 +1,26 @@
+package de.jss.drools.examples
+
+
+declare Person
+	firstName : String
+	lastName : String
+end
+
+rule "Simple modification"
+	when
+		$p : Person(lastName == "Joe" + "Doe")
+	then
+		modify    ($p) {
+			setFirstName("Doe")
+		}
+end
+
+rule "Swap first and last name"
+	when
+		$p : Person($firstName : firstName, $lastName : lastName)
+	then
+		modify($p) {
+			setFirstName($lastName + "XX"),
+			setLastName($firstName)
+		}
+end

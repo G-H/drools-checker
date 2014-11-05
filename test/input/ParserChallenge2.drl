@@ -1,0 +1,12 @@
+package de.jss.drools.examples
+
+import de.jss.drools.examples.model.Message;
+import de.jss.drools.examples.model.Person;
+
+rule "Test Rule 1: Message and Receiver"
+	when
+		$person : Person(firstName == "Joe")
+		$message : Message(receiver == $person)
+	then
+		System.out.println($message.getText());
+end

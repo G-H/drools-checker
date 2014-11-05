@@ -1,0 +1,2 @@
+defaultpkg_A(x) -> defaultpkg_A(1) [x=0]
+defaultpkg_A(x) -> defaultpkg_A(0) [x=1]

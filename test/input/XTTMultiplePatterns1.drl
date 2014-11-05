@@ -1,0 +1,60 @@
+declare A
+	x : Integer
+	y : Integer
+	z : Integer
+end
+
+declare B
+	x : Integer
+	y : Integer
+	z : Integer
+end
+
+rule "Initializing Working Memory..."
+	then
+		System.out.println(drools.getRule().getName());
+		insert(new A(0, 1, 2));
+		insert(new B(1, 2, 3));
+end
+
+rule "Deactivate A Loop"
+	when
+		$b : B(x == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($b);
+		modify($b) {
+			setX(0)
+		}
+		System.out.print(" > ");
+		System.out.println($b);
+end
+
+rule "Rule A Loop 0 > 1"
+	when
+		$a : A(x == 0) and B(x == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(1)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule A Loop 1 > 0"
+	when
+		$a : A(x == 1) and B(x == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(0)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end

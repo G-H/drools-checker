@@ -1,0 +1,17 @@
+package de.jss.drools.examples
+
+declare TestType
+	testByte : byte
+	testShort : short
+	testInt : int
+	testLong : long
+	testFloat : float
+	testDouble : double
+	testBoolean : boolean
+	testChar : char
+end
+
+rule "Test Rule 1"
+	when
+	then
+end

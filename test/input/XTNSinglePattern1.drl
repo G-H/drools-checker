@@ -1,0 +1,37 @@
+declare A
+	x : Integer
+end
+
+rule "Initializing Working Memory..."
+	then
+		System.out.println(drools.getRule().getName());
+		insert(new A(0));
+end
+
+rule "Rule 0 > 1"
+	when
+		$a : A(x == 0)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(1)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule 1 > 0"
+	when
+		$a : A(x == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(0)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end

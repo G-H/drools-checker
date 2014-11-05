@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<package name="defaultpkg">
+	<type name="defaultpkg.Flower">
+		<attribute name="color" type="java.lang.String"></attribute>
+		<attribute name="name" type="java.lang.String"></attribute>
+	</type>
+	<type name="defaultpkg.Sugar">
+		<attribute name="sweetness" type="java.lang.Integer"></attribute>
+	</type>
+	<type name="defaultpkg.Person">
+		<attribute name="name" type="java.lang.String"></attribute>
+		<attribute name="sweetness" type="java.lang.Integer"></attribute>
+	</type>
+	<rule name="Initializing Working Memory...">
+		<conditions></conditions>
+		<consequences>
+			<message value="System.out.println(drools.getRule().getName())"></message>
+			<action factType="defaultpkg.Flower" type="Insertion">
+				<assignment attribute="color">
+					<literal value="&quot;red&quot;"></literal>
+				</assignment>
+				<assignment attribute="name">
+					<literal value="&quot;Rose&quot;"></literal>
+				</assignment>
+			</action>
+			<action factType="defaultpkg.Flower" type="Insertion">
+				<assignment attribute="color">
+					<literal value="&quot;yellow&quot;"></literal>
+				</assignment>
+				<assignment attribute="name">
+					<literal value="&quot;Violet&quot;"></literal>
+				</assignment>
+			</action>
+			<action factType="defaultpkg.Person" type="Insertion">
+				<assignment attribute="name">
+					<literal value="&quot;Alice&quot;"></literal>
+				</assignment>
+				<assignment attribute="sweetness">
+					<literal value="9"></literal>
+				</assignment>
+			</action>
+			<action factType="defaultpkg.Person" type="Insertion">
+				<assignment attribute="name">
+					<literal value="&quot;Bob&quot;"></literal>
+				</assignment>
+				<assignment attribute="sweetness">
+					<literal value="7"></literal>
+				</assignment>
+			</action>
+			<action factType="defaultpkg.Sugar" type="Insertion">
+				<assignment attribute="sweetness">
+					<literal value="9"></literal>
+				</assignment>
+			</action>
+		</consequences>
+	</rule>
+	<rule name="Roses are red.">
+		<conditions>
+			<pattern type="defaultpkg.Flower">
+				<constraint attribute="color" relation="==" value="&quot;red&quot;"></constraint>
+				<constraint attribute="name" relation="==" value="&quot;Rose&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println(&quot;We found a red rose.&quot;)"></message>
+		</consequences>
+	</rule>
+	<rule name="Violets are blue?">
+		<conditions>
+			<pattern type="defaultpkg.Flower">
+				<constraint attribute="color" relation="!=" value="&quot;blue&quot;"></constraint>
+				<constraint attribute="name" relation="==" value="&quot;Violet&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.println(&quot;We need to fix some violet.&quot;)"></message>
+			<action factType="defaultpkg.Flower" pattern="$f" type="Modification">
+				<assignment attribute="color">
+					<literal value="&quot;blue&quot;"></literal>
+				</assignment>
+			</action>
+		</consequences>
+	</rule>
+	<rule name="Violets are blue!">
+		<conditions>
+			<pattern type="defaultpkg.Flower">
+				<constraint attribute="color" relation="==" value="&quot;blue&quot;"></constraint>
+				<constraint attribute="name" relation="==" value="&quot;Violet&quot;"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.format(&quot;This seems like a proper violet: %s.\n&quot;, $f)"></message>
+		</consequences>
+	</rule>
+	<rule name="Sugar is sweet and so are you.">
+		<conditions>
+			<pattern type="defaultpkg.Sugar">
+				<binding name="$sweetness" value="sweetness"></binding>
+			</pattern>
+			<pattern type="defaultpkg.Person">
+				<constraint attribute="sweetness" relation="==" value="$sweetness"></constraint>
+			</pattern>
+		</conditions>
+		<consequences>
+			<message value="System.out.format(&quot;Maybe this is you: %s.\n&quot;, $p)"></message>
+		</consequences>
+	</rule>
+</package>

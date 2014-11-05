@@ -1,0 +1,296 @@
+declare RDS16
+	id : Integer
+	sg : Integer
+	vi : Integer
+end
+
+declare RDS17
+	id : Integer
+	sg : Integer
+	vi : Integer
+end
+
+declare RDS18
+	id : Integer
+	sg : Integer
+	vi : Integer
+end
+
+rule Rule16B1
+	when
+		$ds : RDS16(sg == 7, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B2
+	when
+		$ds : RDS16(sg == 12, vi != 101)
+	then
+		modify($ds) {
+			setVi(101)
+		}
+end
+
+rule Rule16B3
+	when
+		$ds : RDS16(sg == 13, vi != 101)
+	then
+		modify($ds) {
+			setVi(101)
+		}
+end
+
+rule Rule16B4
+	when
+		$ds : RDS16(sg == 23, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B5
+	when
+		$ds : RDS16(sg == 24, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B6
+	when
+		$ds : RDS16(sg == 26, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B7
+	when
+		$ds : RDS16(sg == 27, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B8
+	when
+		$ds : RDS16(sg == 32, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule16B9
+	when
+		$ds : RDS16(sg == 33, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B1
+	when
+		$ds : RDS17(sg == 7, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B2
+	when
+		$ds : RDS17(sg == 11, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B3
+	when
+		$ds : RDS17(sg == 12, vi != 101)
+	then
+		modify($ds) {
+			setVi(101)
+		}
+end
+
+rule Rule17B4
+	when
+		$ds : RDS17(sg == 13, vi != 101)
+	then
+		modify($ds) {
+			setVi(101)
+		}
+end
+
+rule Rule17B5
+	when
+		$ds : RDS17(sg == 21, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B6
+	when
+		$ds : RDS17(sg == 22, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B7
+	when
+		$ds : RDS17(sg == 23, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B8
+	when
+		$ds : RDS17(sg == 24, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B9
+	when
+		$ds : RDS17(sg == 27, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B10
+	when
+		$ds : RDS17(sg == 28, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B11
+	when
+		$ds : RDS17(sg == 30, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B12
+	when
+		$ds : RDS17(sg == 31, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B13
+	when
+		$ds : RDS17(sg == 32, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule17B14
+	when
+		$ds : RDS17(sg == 33, vi != 100)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B1
+	when
+		$ds : RDS18(sg == 7, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B2
+	when
+		$ds : RDS18(sg == 12, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B3
+	when
+		$ds : RDS18(sg == 13, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B4
+	when
+		$ds : RDS18(sg == 23, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B5
+	when
+		$ds : RDS18(sg == 24, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B6
+	when
+		$ds : RDS18(sg == 26, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B7
+	when
+		$ds : RDS18(sg == 27, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end
+
+rule Rule18B8
+	when
+		$ds : RDS18(sg == 33, vi != 100, id != 66)
+	then
+		modify($ds) {
+			setVi(100)
+		}
+end

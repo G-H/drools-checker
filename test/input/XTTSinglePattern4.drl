@@ -1,0 +1,55 @@
+declare A
+	x : Integer
+	y : Integer
+	z : Integer
+end
+
+rule "Initializing Working Memory..."
+	then
+		System.out.println(drools.getRule().getName());
+		insert(new A(1, 0, 0));
+end
+
+rule "Rule 1** > 01*"
+	when
+		$a : A(x == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setX(0),
+			setY(1)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule *1* > *01"
+	when
+		$a : A(y == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setY(0),
+			setZ(1)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
+
+rule "Rule **1 > **2"
+	when
+		$a : A(z == 1)
+	then
+		System.out.print(drools.getRule().getName());
+		System.out.print(": ");
+		System.out.print($a);
+		modify($a) {
+			setZ(2)
+		}
+		System.out.print(" > ");
+		System.out.println($a);
+end
